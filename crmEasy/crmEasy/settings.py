@@ -15,6 +15,7 @@ from django.core.exceptions import ImproperlyConfigured
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+
 # Handling Key Import Errors
 def get_env_var(var_name):
     """  Get the env var or return error messages """
@@ -23,6 +24,7 @@ def get_env_var(var_name):
     except KeyError:
         error_msg = "Set the {} environment variable".format(var_name)
         raise ImproperlyConfigured(error_msg)
+
 
 # Get ENV VARIABLES key
 ENV_ROLE = get_env_var('ENV_ROLE')
@@ -141,3 +143,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = 'staticfiles'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static')
+)
